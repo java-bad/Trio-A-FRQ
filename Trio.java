@@ -1,6 +1,7 @@
 import java.util.List;
 import java.util.ArrayList;
 import java.text.*;
+import java.util.Arrays;
 
 interface MenuItem
 {
@@ -54,25 +55,36 @@ class Sandwich extends SimpleLunchItem
 public class Trio implements MenuItem
 {
    // declare the instance variables that you need for a trio object
+   Sandwich sandwich;
+   Salad salad;
+   Drink drink;
 
    // write a constructor that takes a Sandwich, Salad, and a Drink, in that order
-public Trio (String sandwich, String salad, String drink) {
-    sandwich = _swich;
-    salad = _salad;
-    drink= _drink;
-    }
-   // write the getName method it should return
-   public String getName() {
-   return name;
+   public Trio(Sandwich a, Salad b, Drink c) {
+      sandwich = a;
+      salad = b;
+      drink = c;
    }
+
+   // write the getName method it should return
    // sandwich name/salad name/drink name Trio
+   public String getName() {
+      return String.format("%s/%s/%s Trio", sandwich.getName(), salad.getName(), drink.getName());
+   }
 
    // write the getPrice method
-   public Double getPrice() {
-   for (int i = 0; i<trio.length; i++) {
-   
-   
    // it should return the price of the two highest price items in the trio.
+   public double getPrice() {
+      double[] arr = {
+         sandwich.getPrice(),
+         salad.getPrice(),
+         drink.getPrice()
+      };
+
+      Arrays.sort(arr);
+
+      return arr[1] + arr[2];
+   }
 
    public static void main(String[] args)
    {
